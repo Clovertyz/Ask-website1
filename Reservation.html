@@ -1,0 +1,230 @@
+<html>
+<title>Padrino - Reservation</title>
+<head>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('padrino2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #333; 
+}
+
+h1 {
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 65px;
+    margin-top: 10px;
+    text-shadow:
+        0 0 3px #FFD700,
+        0 0 6px #FFD700,
+        0 0 10px #FFA500; 
+}
+.navbar {
+    text-align: center; 
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.navbar li {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #FFEAB3;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+
+.reservation-box {
+    width: 90%;
+    max-width: 450px;
+    background: white;
+    padding: 20px;
+    margin: 40px auto; 
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.label-text {
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    display: block; 
+}
+
+.selector-row input {
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: none;
+    box-sizing: border-box; 
+    font-size: 16px;
+}
+
+.selector-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+}
+
+.simple-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    cursor: pointer;
+    border: 1px solid #aaa;
+    background-color: #eee;
+    border-radius: 5px;
+}
+.submit-btn {
+    width: 90%;
+    max-width: 450px;
+    padding: 15px;
+    font-size: 1.2em;
+    color: white;
+    background-color: #FFA500; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px auto; 
+    display: block; 
+    text-align: center;
+}
+
+.submit-btn:hover {
+    background-color: #FF8C00;
+}
+</style>
+
+</head>
+
+<body>
+<div class="navbar">
+    <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="Menu.html">Menu</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+    </ul>
+</div>
+
+<h1>𝑅𝑒𝓈𝑒𝓇𝓋𝒶𝓉𝒾𝑜𝓃</h1>
+
+<div class="reservation-box">
+
+<p style="text-align: center;"><strong>RM85.00/ Pax</strong></p>
+
+<span class="label-text">Name</span>
+<div class="selector-row">
+    <input type="text" id="userName" placeholder="Enter your name">
+</div>
+
+<span class="label-text">Email</span>
+<div class="selector-row">
+    <input type="email" id="userEmail" placeholder="Enter your email address">
+</div>
+
+<span class="label-text">Date</span>
+<div class="selector-row">
+    <button class="simple-btn" id="dateMinus">-</button>
+    <span id="dateDisplay">Nov 17 2025</span>
+    <button class="simple-btn" id="datePlus">+</button>
+</div>
+
+<span class="label-text">Time Frame</span>
+<div class="selector-row">
+    <button class="simple-btn" id="timeMinus">-</button>
+    <span id="timeDisplay">12:00 PM</span>
+    <button class="simple-btn" id="timePlus">+</button>
+</div>
+
+</div>
+
+<button class="submit-btn" onclick="submitForm()">Submit</button>
+
+
+<script>
+
+let dateObj = new Date(2025, 10, 17);
+let timeMinutes = 12 * 60;
+
+function updateDate() {
+    let options = { month: "short" };
+    let m = new Intl.DateTimeFormat("en-US", options).format(dateObj);
+    let d = dateObj.getDate();
+    let y = dateObj.getFullYear();
+    document.getElementById("dateDisplay").textContent = m + " " + d + " " + y;
+}
+
+function updateTime() {
+    let hrs = Math.floor(timeMinutes / 60);
+    let mins = timeMinutes % 60;
+    let ampm = hrs >= 12 ? "PM" : "AM";
+    if (hrs === 0) hrs = 12;
+    if (hrs > 12) hrs -= 12;
+    let minsStr = mins < 10 ? "0" + mins : mins;
+    document.getElementById("timeDisplay").textContent = hrs + ":" + minsStr + " " + ampm;
+}
+function submitForm() {
+    const nameInput = document.getElementById('userName');
+    const emailInput = document.getElementById('userEmail');
+
+    if (nameInput.value.trim() !== '' && emailInput.value.trim() !== '') {
+        alert('Your Reservation Has Been Submitted');
+        // Clear the fields after successful submission
+        nameInput.value = '';
+        emailInput.value = '';
+    } else {
+        alert('Please fill in both Name and Email fields.');
+    }
+}
+
+
+document.getElementById("datePlus").onclick = function() {
+    dateObj.setDate(dateObj.getDate() + 1);
+    updateDate();
+};
+
+document.getElementById("dateMinus").onclick = function() {
+    dateObj.setDate(dateObj.getDate() - 1);
+    updateDate();
+};
+
+document.getElementById("timePlus").onclick = function() {
+    timeMinutes += 30;
+    if (timeMinutes >= 24 * 60) timeMinutes = 0;
+    updateTime();
+};
+
+document.getElementById("timeMinus").onclick = function() {
+    timeMinutes -= 30;
+    if (timeMinutes < 0) timeMinutes = 23 * 60 + 30;
+    updateTime();
+};
+
+updateDate();
+updateTime();
+
+</script>
+</body>
+</html>

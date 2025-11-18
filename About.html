@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Padrino</title>
+<style>
+h1 {
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 64px;
+    margin-top: 10px;
+    text-shadow:
+        0 0 3px #FFD700,
+        0 0 6px #FFD700,
+        0 0 10px #FFA500;
+}
+.navbar{text-align:center;top:0;width:100%;z-index:1000;}
+.navbar ul{list-style:none;margin:0;padding:0;}
+.navbar li{display:inline-block;margin:0 25px;}
+.navbar a{text-decoration:none;color:#FFEAB3;font-weight:bold;font-size:18px;}
+.navbar a:hover{text-decoration:underline;}
+
+.about-container{
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #FFEFC8;
+    font-family: "Georgia", serif;
+    line-height: 1.6;
+    text-align: center;
+    text-shadow: 0 0 3px rgba(0,0,0,0.6);
+}
+.about-title{
+    font-size: 36px;
+    margin: 10px 0 15px 0;
+    color: #FFF1B8;
+    text-shadow:
+        0 0 4px #FFD700,
+        0 0 8px #FFA500;
+}
+.about-text{
+    font-size: 18px;
+    margin: 12px 0;
+    background: linear-gradient(rgba(0,0,0,0.10), rgba(0,0,0,0.05));
+    padding: 12px;
+    border-radius: 6px;
+}
+.small-note{
+    font-size: 14px;
+    opacity: 0.9;
+    margin-top: 8px;
+}
+@media (max-width:600px){
+    h1 { font-size: 44px; }
+    .about-text { font-size: 16px; padding: 10px; }
+    .about-container { padding: 12px; }
+}
+</style>
+</head>
+<body style="margin: 0;
+             height: 100vh;
+             background-image: url('padrino2.jpg');
+             background-repeat: no-repeat;
+             background-size: cover;
+             background-position : center;
+             background-attachment: fixed;">
+  <div class="navbar">
+    <ul>
+      <li><a href="Home.html">Home</a></li>
+      <li><a href="Menu.html">Menu</a></li>
+      <li><a href="About.html">About</a></li>
+      <li><a href="Contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <h1>𝓐𝓫𝓸𝓾𝓽</h1>
+
+  <div class="about-container" aria-labelledby="about-heading">
+    <div id="about-heading" class="about-title">𝒫𝒶𝒹𝓇𝒾𝓃𝑜 𝒞𝓊𝒾𝓈𝒾𝓃𝑒</div>
+
+    <p class="about-text">
+      Padrino is a cozy Spanish restaurant dedicated to real, home-style cooking.
+      We bring classic Spanish flavors to your table: small plates of tapas, saffron-scented paella,
+      fresh seafood, and family recipes made with care.
+    </p>
+
+    <p class="about-text">
+      Our dishes are prepared from high-quality, fresh ingredients and inspired by recipes passed down
+      through generations. Whether you come for a quick tapa and a glass of wine or a long family meal,
+      you'll find warm hospitality, rustic charm, and the taste of Spain.
+    </p>
+
+    <p class="about-text">
+      Come relax in our welcoming space, enjoy lively conversation, and celebrate the simple joy of good food.
+      We look forward to serving you.
+    </p>
+
+    <div class="small-note">Open daily for lunch and dinner • Reservations recommended for groups</div>
+  </div>
+</body>
+</html>
